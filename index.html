@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="kimch0612의 순수 HTML, CSS, JavaScript 기반 반응형 포트폴리오입니다."
+    />
+    <title>kimch0612 Portfolio</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header" id="site-header">
+      <nav class="navbar" aria-label="주요 메뉴">
+        <a class="logo" href="#hero" data-scroll-link>kimch0612</a>
+
+        <div class="nav-actions">
+          <button
+            class="theme-toggle"
+            type="button"
+            data-theme-toggle
+            aria-label="다크 모드 전환"
+          >
+            D
+          </button>
+          <button
+            class="hamburger"
+            type="button"
+            data-menu-toggle
+            aria-controls="nav-menu"
+            aria-expanded="false"
+            aria-label="메뉴 열기"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <ul class="nav-menu" id="nav-menu">
+          <li><a class="nav-link" href="#about" data-scroll-link>About</a></li>
+          <li><a class="nav-link" href="#skills" data-scroll-link>Skills</a></li>
+          <li><a class="nav-link" href="#projects" data-scroll-link>Projects</a></li>
+          <li><a class="nav-link" href="#contact" data-scroll-link>Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section hero reveal" id="hero" aria-labelledby="hero-title">
+        <div class="section-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">HTML CSS JavaScript Portfolio</p>
+            <h1 id="hero-title">안녕하세요.<br />kimch0612입니다.</h1>
+            <p class="hero-description">
+              순수 HTML/CSS/JavaScript 포트폴리오입니다.
+            </p>
+            <div class="hero-actions" aria-label="주요 이동 버튼">
+              <a class="button button-primary" href="#projects" data-scroll-link>View Projects</a>
+              <a class="button button-secondary" href="#contact" data-scroll-link>Contact</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about reveal" id="about" aria-labelledby="about-title">
+        <div class="section-inner split-layout">
+          <div class="profile-frame">
+            <img src="images/profile.svg" alt="kimch0612 포트폴리오 프로필 일러스트" />
+          </div>
+          <div>
+            <p class="eyebrow">About</p>
+            <h2 id="about-title">기초를 단단하게 쌓는 웹 개발자</h2>
+            <p>
+              사용자 이벤트가 상태를 바꾸고, 그 상태가 다시 화면을 바꾸는 흐름을
+              직접 구현하며 웹의 동작 원리를 학습하고 있습니다. 작은 기능도 구조와
+              접근성을 함께 고려해 유지보수하기 좋은 코드로 만드는 것을 목표로 합니다.
+            </p>
+            <ul class="about-list" aria-label="관심 분야">
+              <li>시맨틱 HTML과 접근성</li>
+              <li>Flexbox와 Grid 기반 반응형 레이아웃</li>
+              <li>fetch, async/await를 활용한 API 상태 처리</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section skills reveal" id="skills" aria-labelledby="skills-title">
+        <div class="section-inner">
+          <p class="eyebrow">Skills</p>
+          <h2 id="skills-title">사용 기술</h2>
+          <div class="skills-grid">
+            <article class="skill-card">
+              <h3>HTML</h3>
+              <p>시맨틱 태그, 앵커 네비게이션, 폼 label 연결을 기준으로 구조를 설계합니다.</p>
+            </article>
+            <article class="skill-card">
+              <h3>CSS</h3>
+              <p>CSS 변수, Flexbox, Grid, 모바일 퍼스트 반응형 스타일을 사용합니다.</p>
+            </article>
+            <article class="skill-card">
+              <h3>JavaScript</h3>
+              <p>DOM 선택, 이벤트 연결, 상태 변경, 렌더링 함수를 분리해 구현합니다.</p>
+            </article>
+            <article class="skill-card">
+              <h3>API</h3>
+              <p>fetch와 async/await로 데이터를 가져오고 로딩, 성공, 실패, 빈 상태를 표현합니다.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section projects reveal" id="projects" aria-labelledby="projects-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Projects</p>
+              <h2 id="projects-title">GitHub 저장소</h2>
+            </div>
+            <button class="button button-ghost" type="button" data-refresh-projects>
+              Refresh
+            </button>
+          </div>
+
+          <div class="projects-status" id="projects-status" role="status" aria-live="polite"></div>
+          <div class="projects-grid" id="projects-grid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="section contact reveal" id="contact" aria-labelledby="contact-title">
+        <div class="section-inner contact-layout">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2 id="contact-title">문의하기</h2>
+            <p>
+              이름, 이메일, 메시지를 입력하면 브라우저에서 유효성을 검사하고
+              성공 메시지를 표시합니다.
+            </p>
+          </div>
+
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="form-field">
+              <label for="name">이름</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                aria-describedby="name-error"
+              />
+              <p class="error-message" id="name-error" data-error-for="name" aria-live="polite"></p>
+            </div>
+
+            <div class="form-field">
+              <label for="email">이메일</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                aria-describedby="email-error"
+              />
+              <p class="error-message" id="email-error" data-error-for="email" aria-live="polite"></p>
+            </div>
+
+            <div class="form-field">
+              <label for="message">메시지</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                aria-describedby="message-error"
+              ></textarea>
+              <p class="error-message" id="message-error" data-error-for="message" aria-live="polite"></p>
+            </div>
+
+            <button class="button button-primary" type="submit">Send</button>
+            <p class="form-success" id="form-success" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>&copy; 2026 kimch0612. All rights reserved.</p>
+        <ul class="social-links" aria-label="소셜 링크">
+          <li><a href="https://github.com/kimch0612" target="_blank" rel="noreferrer">GitHub</a></li>
+          <li><a href="https://github.com/kimch0612/Codyssey_Subject4_B4-1" target="_blank" rel="noreferrer">Repository</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <button class="scroll-top" type="button" data-scroll-top aria-label="맨 위로 이동">Top</button>
+  </body>
+</html>
