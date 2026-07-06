@@ -355,39 +355,59 @@ function submitForm(event) {
   });
 }
 
-function startScrollAnimation() {
-  if (!("IntersectionObserver" in window)) {
+function startScrollAnimation() { // 스크롤 애니메이션 시작 함수
+    // IntersectionObserver는 특정 요소가 화면에 들어왔는지, 얼마나 보이는지 감지하는 브라우저 기능
+  if (!("IntersectionObserver" in window)) { // 브라우저가 IntersectionObserver 기능을 지원하는가?
     revealSections.forEach((section) => section.classList.add("is-visible"));
+    // 브라우저가 IntersectionObserver를 지원하지 않으면, 애니메이션 감지를 할 수 없으니까 모든 .reveal 요소를 그냥 보이게 한다
     return;
   }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+  const observer = new IntersectionObserver( // 새 IntersectionObserver 객체를 만들자
+    (entries) => {  // observer가 실행할 콜백 함수 (entries는 관찰 중인 모든 요소의 상태 정보 배열)
+ /*        
+[
+  { target: aboutSection, isIntersecting: true, ... },
+  { target: skillsSection, isIntersecting: false, ... }
+] 
+  */
+      entries.forEach((entry) => { 
+        if (entry.isIntersecting) { // 현재 객체가 화면과 교차 중인가? (ture면 화면에 들어와 있고, false면 화면 밖에 있거나 조건에 부합하지 않은 것)
+          entry.target.classList.add("is-visible"); // 화면에 들어온 요소에 is-visible 클래스를 붙이고
+          observer.unobserve(entry.target); // 관찰을 끈다
         }
       });
     },
-    { threshold: OBSERVER_THRESHOLD },
+    { threshold: OBSERVER_THRESHOLD }, // 대상 요소가 viewport와 약 20% 겹쳤는가?
   );
 
-  revealSections.forEach((section) => observer.observe(section));
+  revealSections.forEach((section) => observer.observe(section)); // .reveal 요소들을 하나씩 observer에게 관찰 대상으로 등록하는 코드 (근데 이게 왜 맨 밑에 있어야 하는지를 잘 모르겠음. 맨 위에 올라와 있어야 최초 실행 시 누락되는 케이스가 없는거 아닌가?)
+/* 1. startScrollAnimation() 실행
+2. IntersectionObserver 지원 여부 확인
+3. observer 객체 생성
+4. revealSections.forEach(...) 실행
+5. 모든 .reveal 섹션을 observer 관찰 대상으로 등록
+6. 함수 종료
+7. 나중에 사용자가 스크롤함
+8. 어떤 섹션이 화면에 들어옴
+9. 그때 콜백 함수 실행
+10. is-visible 추가
+11. observer.unobserve(entry.target)로 그 섹션만 관찰 해제 */
+// 즉, "revealSections.forEach((section) => observer.observe(section));" 함수가 매번 실행되는게 아니라 최초로 함수가 실행될 때 한 번 수행되고, 이후에는 observer 콜백 함수가 스크롤이 될 때마다 observe하는 것
 }
 
-function bindEvents() {
-  themeButton.addEventListener("click", changeTheme);
-  menuButton.addEventListener("click", changeMenu);
-  scrollTopButton.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-  refreshButton.addEventListener("click", loadProjects);
-  contactForm.addEventListener("input", changeField);
-  contactForm.addEventListener("submit", submitForm);
-  window.addEventListener("scroll", renderScrollUI);
-  scrollLinks.forEach((link) => link.addEventListener("click", moveToSection));
+function bindEvents() { // 특정 이벤트를 어떤 함수와 연결할건지 정의
+  themeButton.addEventListener("click", changeTheme); // 다크모드 버튼에 클릭 이벤트를 연결
+  menuButton.addEventListener("click", changeMenu); // 햄버거 메뉴에 클릭 이벤트 연결
+  scrollTopButton.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" })); // 탑버튼에 클릭 이벤트를 연결 (부드럽게 페이지 최상단으로)
+  refreshButton.addEventListener("click", loadProjects); // 프로젝트 섹션의 새로고침 버튼에 클릭 이벤트 연결
+  contactForm.addEventListener("input", changeField); // 폼에 입력 이벤트 연결
+  contactForm.addEventListener("submit", submitForm); // 폼에 제출 이벤트 연결
+  window.addEventListener("scroll", renderScrollUI); // 브라우저 창 전체에 스크롤 이벤트 연결
+  scrollLinks.forEach((link) => link.addEventListener("click", moveToSection)); // data-scroll-link가 붙은 모든 앵커 링크에 click 이벤트 추가
 }
 
-function init() {
+function init() { // script.js가 로드될 때 한꺼번에 기능을 초기화하는 함수
   renderTheme();
   renderMenu();
   renderScrollUI();
