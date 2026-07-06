@@ -1,4 +1,4 @@
-:root {
+:root { /* 사이트 전체에서 재사용할 색상, 간격, 그림자, 레이아웃 기준값을 CSS 변수로 정의 */
   --color-bg: #f7f8fb;
   --color-section: #eef4f3;
   --color-card: #ffffff;
@@ -20,7 +20,7 @@
   --space-5: 3rem;
 }
 
-[data-theme="dark"] {
+[data-theme="dark"] { /* 다크 모드일 때 덮어쓸 색상과 그림자 변수 정의 */
   --color-bg: #111418;
   --color-section: #17211f;
   --color-card: #1c232b;
@@ -34,15 +34,15 @@
   --shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
 }
 
-* {
+* { /* 모든 요소의 너비 계산을 border-box로 통일 */
   box-sizing: border-box;
 }
 
-html {
+html { /* 앵커 이동 시 기본 스크롤을 부드럽게 설정 */
   scroll-behavior: smooth;
 }
 
-body {
+body { /* 페이지 전체의 기본 배경, 글자, 폰트, 최소 너비 설정 */
   min-width: 320px;
   margin: 0;
   overflow-x: hidden;
@@ -52,36 +52,36 @@ body {
   line-height: 1.6;
 }
 
-body.nav-open {
+body.nav-open { /* 모바일 메뉴가 열렸을 때 배경 스크롤 방지 */
   overflow: hidden;
 }
 
-img {
+img { /* 이미지가 부모 너비를 넘지 않도록 설정 */
   display: block;
   max-width: 100%;
 }
 
-a {
+a { /* 링크의 기본 밑줄과 색상 스타일 초기화 */
   color: inherit;
   text-decoration: none;
 }
 
 button,
 input,
-textarea {
+textarea { /* 폼 요소와 버튼이 페이지 폰트를 상속하도록 설정 */
   font: inherit;
 }
 
-button {
+button { /* 버튼 위에 마우스를 올렸을 때 클릭 가능한 커서 표시 */
   cursor: pointer;
 }
 
-:focus-visible {
+:focus-visible { /* 키보드 포커스가 보이도록 접근성 outline 설정 */
   outline: 3px solid var(--color-accent);
   outline-offset: 3px;
 }
 
-.site-header {
+.site-header { /* 상단 헤더를 화면 위에 고정하고 기본 스타일 설정 */
   position: fixed;
   top: 0;
   left: 0;
@@ -92,13 +92,13 @@ button {
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.site-header.scrolled {
+.site-header.scrolled { /* 스크롤 후 헤더 배경과 그림자를 적용 */
   background: var(--color-card);
   border-bottom-color: var(--color-border);
   box-shadow: var(--shadow);
 }
 
-.navbar {
+.navbar { /* 로고, 메뉴, 버튼 영역을 가로로 배치하는 네비게이션 바 설정 */
   width: min(100% - 2rem, var(--max-width));
   min-height: var(--header-height);
   margin: 0 auto;
@@ -108,18 +108,18 @@ button {
   gap: var(--space-2);
 }
 
-.logo {
+.logo { /* 로고 텍스트를 굵게 표시 */
   font-weight: 800;
 }
 
-.nav-actions {
+.nav-actions { /* 테마 버튼과 햄버거 버튼을 가로로 배치 */
   display: flex;
   gap: var(--space-1);
 }
 
 .theme-toggle,
 .hamburger,
-.scroll-top {
+.scroll-top { /* 작은 아이콘형 버튼의 공통 크기와 스타일 설정 */
   width: 44px;
   height: 44px;
   display: inline-grid;
@@ -136,34 +136,34 @@ button {
 .scroll-top:hover,
 .button:hover,
 .skill-card:hover,
-.project-card:hover {
+.project-card:hover { /* 버튼과 카드에 마우스를 올렸을 때 살짝 올라가는 효과 */
   transform: translateY(-3px);
   border-color: var(--color-primary);
 }
 
-.hamburger {
+.hamburger { /* 햄버거 버튼 내부 선 사이 간격 설정 */
   gap: 5px;
 }
 
-.hamburger span {
+.hamburger span { /* 햄버거 아이콘의 각 선 모양 설정 */
   width: 20px;
   height: 2px;
   background: currentColor;
 }
 
-.hamburger.active span:nth-child(1) {
+.hamburger.active span:nth-child(1) { /* 메뉴 열림 상태에서 첫 번째 선을 X 모양으로 회전 */
   transform: translateY(7px) rotate(45deg);
 }
 
-.hamburger.active span:nth-child(2) {
+.hamburger.active span:nth-child(2) { /* 메뉴 열림 상태에서 가운데 선을 숨김 */
   opacity: 0;
 }
 
-.hamburger.active span:nth-child(3) {
+.hamburger.active span:nth-child(3) { /* 메뉴 열림 상태에서 세 번째 선을 X 모양으로 회전 */
   transform: translateY(-7px) rotate(-45deg);
 }
 
-.nav-menu {
+.nav-menu { /* 모바일에서 기본적으로 숨겨진 메뉴 패널 스타일 설정 */
   display: none;
   position: fixed;
   top: var(--header-height);
@@ -178,12 +178,12 @@ button {
   box-shadow: var(--shadow);
 }
 
-.nav-menu.active {
+.nav-menu.active { /* 모바일 메뉴가 열렸을 때 메뉴 목록 표시 */
   display: grid;
   gap: var(--space-1);
 }
 
-.nav-link {
+.nav-link { /* 네비게이션 링크의 클릭 영역과 텍스트 스타일 설정 */
   display: block;
   padding: 0.75rem;
   border-radius: 8px;
@@ -191,22 +191,22 @@ button {
   font-weight: 700;
 }
 
-.nav-link:hover {
+.nav-link:hover { /* 네비게이션 링크 hover 배경과 글자색 변경 */
   background: var(--color-section);
   color: var(--color-text);
 }
 
-.section {
+.section { /* 각 콘텐츠 섹션의 공통 여백과 앵커 스크롤 위치 보정 */
   padding: var(--space-5) 0;
   scroll-margin-top: calc(var(--header-height) + 1rem);
 }
 
-.section-inner {
+.section-inner { /* 섹션 내부 콘텐츠의 최대 너비와 가운데 정렬 설정 */
   width: min(100% - 2rem, var(--max-width));
   margin: 0 auto;
 }
 
-.hero {
+.hero { /* 첫 화면 hero 섹션의 높이와 배경 설정 */
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -214,11 +214,11 @@ button {
   background: var(--color-section);
 }
 
-.hero-copy {
+.hero-copy { /* hero 텍스트 영역의 최대 너비 제한 */
   max-width: 760px;
 }
 
-.eyebrow {
+.eyebrow { /* 섹션 상단 작은 라벨 텍스트 스타일 설정 */
   margin: 0 0 var(--space-1);
   color: var(--color-primary);
   font-size: 0.85rem;
@@ -229,29 +229,29 @@ button {
 h1,
 h2,
 h3,
-p {
+p { /* 긴 단어나 문장이 컨테이너 밖으로 넘치지 않게 처리 */
   overflow-wrap: anywhere;
 }
 
 h1,
 h2,
-h3 {
+h3 { /* 제목 요소의 기본 여백과 줄 높이 설정 */
   margin-top: 0;
   line-height: 1.15;
 }
 
-h1 {
+h1 { /* 메인 제목 크기와 줄바꿈 처리 */
   margin-bottom: var(--space-2);
   font-size: 2rem;
   word-break: break-all;
 }
 
-h2 {
+h2 { /* 섹션 제목 크기 설정 */
   margin-bottom: var(--space-2);
   font-size: 1.8rem;
 }
 
-h3 {
+h3 { /* 카드 제목 아래 여백 설정 */
   margin-bottom: var(--space-1);
 }
 
@@ -260,23 +260,23 @@ h3 {
 .contact p,
 .skill-card p,
 .project-description,
-.project-updated {
+.project-updated { /* 보조 설명 텍스트를 muted 색상으로 표시 */
   color: var(--color-muted);
 }
 
 .hero-actions,
 .project-links,
-.social-links {
+.social-links { /* 버튼과 링크 그룹을 가로 배치하고 줄바꿈 허용 */
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-1);
 }
 
-.hero-actions {
+.hero-actions { /* hero 버튼 영역 위쪽 간격 설정 */
   margin-top: var(--space-3);
 }
 
-.button {
+.button { /* 공통 버튼 모양과 hover 전환 효과 설정 */
   min-height: 44px;
   display: inline-flex;
   align-items: center;
@@ -290,27 +290,27 @@ h3 {
 
 .button:hover,
 .skill-card:hover,
-.project-card:hover {
+.project-card:hover { /* 버튼과 카드 hover 시 그림자 효과 적용 */
   box-shadow: var(--shadow);
 }
 
-.button-primary {
+.button-primary { /* 주요 버튼의 배경색과 글자색 설정 */
   background: var(--color-primary);
   color: #ffffff;
 }
 
-[data-theme="dark"] .button-primary {
+[data-theme="dark"] .button-primary { /* 다크 모드에서 주요 버튼 글자색 보정 */
   color: #082f2b;
 }
 
 .button-secondary,
-.button-ghost {
+.button-ghost { /* 보조 버튼과 고스트 버튼의 배경과 테두리 설정 */
   background: var(--color-card);
   border-color: var(--color-border);
 }
 
 .split-layout,
-.contact-layout {
+.contact-layout { /* 2열로 확장될 레이아웃의 기본 grid 설정 */
   display: grid;
   gap: var(--space-4);
 }
@@ -319,22 +319,22 @@ h3 {
 .contact-form,
 .skill-card,
 .project-card,
-.status-box {
+.status-box { /* 카드형 박스들의 공통 배경, 테두리, 그림자 설정 */
   background: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: 8px;
   box-shadow: var(--shadow);
 }
 
-.profile-frame {
+.profile-frame { /* 프로필 이미지 프레임 안쪽 여백 설정 */
   padding: var(--space-2);
 }
 
-.profile-frame img {
+.profile-frame img { /* 프로필 이미지 모서리 둥글게 처리 */
   border-radius: 8px;
 }
 
-.about-list {
+.about-list { /* About 관심 목록을 세로 grid로 배치 */
   display: grid;
   gap: var(--space-1);
   padding: 0;
@@ -342,57 +342,57 @@ h3 {
   list-style: none;
 }
 
-.about-list li {
+.about-list li { /* About 목록 항목의 왼쪽 강조선과 색상 설정 */
   padding-left: var(--space-2);
   border-left: 4px solid var(--color-primary);
   color: var(--color-muted);
 }
 
 .skills,
-.contact {
+.contact { /* Skills와 Contact 섹션 배경색 설정 */
   background: var(--color-section);
 }
 
 .skills-grid,
-.projects-grid {
+.projects-grid { /* 카드 목록 그리드의 공통 간격 설정 */
   display: grid;
   gap: var(--space-2);
 }
 
-.projects-grid {
+.projects-grid { /* Projects 카드를 화면 너비에 맞춰 자동 반응형 열로 배치 */
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .skill-card,
 .project-card,
 .contact-form,
-.status-box {
+.status-box { /* 카드와 폼 박스 내부 여백 설정 */
   padding: var(--space-3);
 }
 
 .skill-card,
-.project-card {
+.project-card { /* 카드 hover 효과를 부드럽게 전환 */
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.section-heading {
+.section-heading { /* 섹션 제목과 액션 버튼 영역의 기본 배치 설정 */
   display: grid;
   gap: var(--space-2);
   margin-bottom: var(--space-3);
 }
 
-.projects-status {
+.projects-status { /* 프로젝트 상태 메시지 영역의 높이와 간격 확보 */
   min-height: 52px;
   margin-bottom: var(--space-2);
 }
 
-.status-box {
+.status-box { /* 로딩, 에러, 빈 상태 박스 내부 요소 배치 */
   display: grid;
   gap: var(--space-1);
   justify-items: start;
 }
 
-.spinner {
+.spinner { /* 로딩 상태를 표시하는 회전 스피너 모양 설정 */
   width: 28px;
   height: 28px;
   border: 4px solid var(--color-border);
@@ -401,18 +401,18 @@ h3 {
   animation: spin 0.8s linear infinite;
 }
 
-@keyframes spin {
-  to {
+@keyframes spin { /* 스피너를 한 바퀴 회전시키는 애니메이션 정의 */
+  to { /* 애니메이션 끝 상태에서 360도 회전 */
     transform: rotate(360deg);
   }
 }
 
-.project-card {
+.project-card { /* 프로젝트 카드 내부 콘텐츠를 세로 grid로 배치 */
   display: grid;
   gap: var(--space-2);
 }
 
-.project-meta {
+.project-meta { /* 프로젝트 언어, 스타, 포크 메타 정보를 칩 형태로 배치 */
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-1);
@@ -423,7 +423,7 @@ h3 {
   font-size: 0.9rem;
 }
 
-.project-meta li {
+.project-meta li { /* 프로젝트 메타 칩의 테두리와 배경 스타일 설정 */
   padding: 0.25rem 0.6rem;
   border: 1px solid var(--color-border);
   border-radius: 999px;
@@ -431,27 +431,27 @@ h3 {
 }
 
 .project-links a,
-.social-links a {
+.social-links a { /* 프로젝트와 소셜 링크를 강조 색상과 굵은 글자로 표시 */
   color: var(--color-primary);
   font-weight: 800;
 }
 
-.contact-form {
+.contact-form { /* Contact 폼 입력 요소들을 세로로 배치 */
   display: grid;
   gap: var(--space-2);
 }
 
-.form-field {
+.form-field { /* label, input, error 메시지를 세로로 묶는 필드 배치 */
   display: grid;
   gap: var(--space-1);
 }
 
-label {
+label { /* 폼 라벨을 굵게 표시 */
   font-weight: 800;
 }
 
 input,
-textarea {
+textarea { /* 입력 요소의 크기, 테두리, 배경, 글자색 설정 */
   width: 100%;
   padding: 0.8rem;
   border: 1px solid var(--color-border);
@@ -461,38 +461,38 @@ textarea {
 }
 
 input:focus,
-textarea:focus {
+textarea:focus { /* 입력 요소 포커스 시 테두리 강조 */
   border-color: var(--color-primary);
   outline: 0;
 }
 
 input.is-invalid,
-textarea.is-invalid {
+textarea.is-invalid { /* 유효성 오류가 있는 입력 요소를 위험 색상으로 표시 */
   border-color: var(--color-danger);
 }
 
 .error-message,
-.form-success {
+.form-success { /* 오류와 성공 메시지 영역의 높이와 글자 크기 설정 */
   min-height: 1.4rem;
   margin: 0;
   font-size: 0.9rem;
 }
 
-.error-message {
+.error-message { /* 폼 오류 메시지를 위험 색상으로 표시 */
   color: var(--color-danger);
 }
 
-.form-success {
+.form-success { /* 폼 성공 메시지를 성공 색상과 굵은 글자로 표시 */
   color: var(--color-success);
   font-weight: 800;
 }
 
-.site-footer {
+.site-footer { /* 페이지 하단 footer의 구분선과 배경 설정 */
   border-top: 1px solid var(--color-border);
   background: var(--color-card);
 }
 
-.footer-inner {
+.footer-inner { /* footer 내부 콘텐츠의 폭, 여백, 배치 설정 */
   width: min(100% - 2rem, var(--max-width));
   margin: 0 auto;
   padding: var(--space-4) 0;
@@ -501,16 +501,16 @@ textarea.is-invalid {
 }
 
 .footer-inner p,
-.social-links {
+.social-links { /* footer 문단과 소셜 링크 목록의 기본 margin 제거 */
   margin: 0;
 }
 
-.social-links {
+.social-links { /* 소셜 링크 목록의 기본 목록 스타일 제거 */
   padding: 0;
   list-style: none;
 }
 
-.scroll-top {
+.scroll-top { /* 맨 위로 이동 버튼의 고정 위치와 숨김 상태 설정 */
   position: fixed;
   right: 1rem;
   bottom: 1rem;
@@ -519,38 +519,38 @@ textarea.is-invalid {
   transform: translateY(16px);
 }
 
-.scroll-top.visible {
+.scroll-top.visible { /* 스크롤 기준을 넘었을 때 Top 버튼을 보이게 설정 */
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
 }
 
-.reveal {
+.reveal { /* 스크롤 등장 애니메이션 전의 숨김과 이동 상태 설정 */
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.reveal.is-visible {
+.reveal.is-visible { /* 스크롤 감지 후 요소를 보이게 하고 원래 위치로 복귀 */
   opacity: 1;
   transform: translateY(0);
 }
 
-@media (min-width: 768px) {
-  body.nav-open {
+@media (min-width: 768px) { /* 태블릿 이상 화면에서 네비게이션과 레이아웃 확장 */
+  body.nav-open { /* 넓은 화면에서는 메뉴 열림 상태여도 본문 스크롤 허용 */
     overflow: auto;
   }
 
-  .hamburger {
+  .hamburger { /* 태블릿 이상에서는 햄버거 버튼 숨김 */
     display: none;
   }
 
-  .nav-actions {
+  .nav-actions { /* 태블릿 이상에서 테마 버튼 영역을 오른쪽 끝으로 배치 */
     order: 3;
   }
 
   .nav-menu,
-  .nav-menu.active {
+  .nav-menu.active { /* 태블릿 이상에서 메뉴를 고정 패널이 아닌 가로 메뉴로 표시 */
     order: 2;
     position: static;
     display: flex;
@@ -562,50 +562,50 @@ textarea.is-invalid {
     box-shadow: none;
   }
 
-  h1 {
+  h1 { /* 태블릿 이상에서 메인 제목 크기 확대 */
     font-size: 3rem;
   }
 
-  h2 {
+  h2 { /* 태블릿 이상에서 섹션 제목 크기 확대 */
     font-size: 2.2rem;
   }
 
   .split-layout,
-  .contact-layout {
+  .contact-layout { /* 태블릿 이상에서 About과 Contact를 2열 레이아웃으로 변경 */
     grid-template-columns: 0.85fr 1.15fr;
     align-items: center;
   }
 
-  .skills-grid {
+  .skills-grid { /* 태블릿 이상에서 Skills 카드를 2열로 배치 */
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .section-heading,
-  .footer-inner {
+  .footer-inner { /* 태블릿 이상에서 제목/푸터 영역을 가로 정렬 */
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 }
 
-@media (min-width: 1024px) {
-  .section {
+@media (min-width: 1024px) { /* 데스크톱 화면에서 여백과 카드 열 수를 더 확장 */
+  .section { /* 데스크톱에서 섹션 세로 여백 확대 */
     padding: 5rem 0;
   }
 
-  h1 {
+  h1 { /* 데스크톱에서 메인 제목 크기 추가 확대 */
     font-size: 3.5rem;
   }
 
-  .skills-grid {
+  .skills-grid { /* 데스크톱에서 Skills 카드를 4열로 배치 */
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) { /* 사용자가 움직임 줄이기를 선호하면 애니메이션을 최소화 */
   *,
   *::before,
-  *::after {
+  *::after { /* 모든 요소의 스크롤, 전환, 애니메이션 시간을 거의 제거 */
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
