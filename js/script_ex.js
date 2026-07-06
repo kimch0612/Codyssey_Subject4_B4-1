@@ -358,6 +358,17 @@ function submitForm(event) {
   });
 }
 
+function shouldRevealSection(entry) { // 모바일 ui에서 프로젝트 카드가 안 나타나던 문제를 해결하기 위해 추가한 함수
+  const canReachThreshold = entry.target.offsetHeight * OBSERVER_THRESHOLD <= window.innerHeight;
+  // 현재 관찰 중인 실제 요소의 전체 높이와 OBSERVER_THRESHOLD를 곱한 값이 현재 브라우저의 화면 높이보다 작거나 같은가?
+  // 이 요소의 20% 높이가 현재 화면 높이보다 작거나 같은가?
+
+  return entry.isIntersecting && (!canReachThreshold || entry.intersectionRatio >= OBSERVER_THRESHOLD);
+  // entry.isIntersecting: 요소가 현재 화면과 조금이라도 겹치고 있는지 확인
+  // !canReachThreshold: threshold 조건을 달성할 수 없는 긴 요소인지 확인
+  // 20% 조건을 달성하기 어려우므로, 화면에 들어오기만 하면 is-visible 허용
+}
+
 function startScrollAnimation() { // 스크롤 애니메이션 시작 함수
     // IntersectionObserver는 특정 요소가 화면에 들어왔는지, 얼마나 보이는지 감지하는 브라우저 기능
   if (!("IntersectionObserver" in window)) { // 브라우저가 IntersectionObserver 기능을 지원하는가?
