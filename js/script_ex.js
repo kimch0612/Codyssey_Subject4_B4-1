@@ -88,6 +88,7 @@ function renderTheme() { // state.theme에 저장된 테마 값을 실제 ui에 
 // documentElement -> 최상위 html 즉, <html> 태그
 // dataset -> <html> 태그에 있는 data-* 속성들을 다루는 객체
 // theme (document.documentElement.dataset.theme로 접근하는 것과 <html data-theme="light">로 접근하는 것은 같다. 이유는 잘 모르겠다..)
+// -> HTML의 data-* 속성은 JS에서 dataset으로 접근할 수 있다. (<html data-theme="light"> -> document.documentElement.dataset.theme)
 
 function changeTheme() { // 테마를 바꾸자
   state.theme = state.theme === "dark" ? "light" : "dark"; // 현재 테마의 값이 다크인가? 맞다면 라이트로 바꾸고 아니면 다크로 바꾸자
@@ -171,7 +172,7 @@ function makeProjectCard(repo) { // 깃허브 api로 받은 레포 데이터 하
       </div>
       <ul class="project-meta">
         <li>${escapeHTML(language || "기타")}</li> // 해당 레포의 언어 출력
-        <li>Stars ${Number(stars)}</li> // 숫자로 출력하는데, Number는 캐스팅 함수인 듯 (문자열인데 숫자로 캐스팅이 필요한 이유는 뭘까)
+        <li>Stars ${Number(stars)}</li> // 숫자로 출력하는데, Number는 캐스팅 함수인 듯 (문자열인데 숫자로 캐스팅이 필요한 이유는 뭘까) -> 숫자로 오지만 혹시 모르니 캐스팅을 한번 더 하는 방어코드
         <li>Forks ${Number(forks)}</li>
       </ul>
       <p class="project-updated">최근 업데이트: ${escapeHTML(formatDate(updatedAt))}</p> // 마지막 커밋일자 출력
@@ -182,6 +183,8 @@ function makeProjectCard(repo) { // 깃허브 api로 받은 레포 데이터 하
     </article>
   `;
 }
+// article을 쓴 이유는 저장소 카드 하나가 독립적으로 이해 가능한 콘텐츠 단위이기 때문이다
+// GitHub 저장소 하나는 제목, 설명, 언어, 링크를 가진 독립된 항목이라 article이 잘 맞다
 
 function renderProjects() { // 깃허브 프로젝트 영역을 다시 렌더링하는 함수 (새로고침 용인듯)
   projectsGrid.innerHTML = ""; // 기존 카드 리스트 초기화
