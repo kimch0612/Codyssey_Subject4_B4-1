@@ -273,6 +273,12 @@ function submitForm(event) {
   });
 }
 
+function shouldRevealSection(entry) {
+  const canReachThreshold = entry.target.offsetHeight * OBSERVER_THRESHOLD <= window.innerHeight;
+
+  return entry.isIntersecting && (!canReachThreshold || entry.intersectionRatio >= OBSERVER_THRESHOLD);
+}
+
 function startScrollAnimation() {
   if (!("IntersectionObserver" in window)) {
     revealSections.forEach((section) => section.classList.add("is-visible"));
@@ -282,13 +288,14 @@ function startScrollAnimation() {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        if (shouldRevealSection(entry)) {
           entry.target.classList.add("is-visible");
           observer.unobserve(entry.target);
         }
       });
     },
-    { threshold: OBSERVER_THRESHOLD },
+    // 0은 긴 모바일 섹션이 화면에 들어오는 순간도 감지하기 위한 보조 threshold다.
+    { threshold: [0, OBSERVER_THRESHOLD] },
   );
 
   revealSections.forEach((section) => observer.observe(section));

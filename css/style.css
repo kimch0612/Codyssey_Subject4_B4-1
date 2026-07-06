@@ -549,7 +549,8 @@ textarea.is-invalid {
     order: 3;
   }
 
-  .nav-menu {
+  .nav-menu,
+  .nav-menu.active {
     order: 2;
     position: static;
     display: flex;
