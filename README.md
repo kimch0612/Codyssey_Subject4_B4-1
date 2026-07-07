@@ -362,12 +362,10 @@ message  필수 입력
 
 ### 데스크톱
 
-![데스크톱 화면](images/screenshot-desktop.png)
+![데스크톱 화면1](./images/screenshot_desktop_light.jpg)
+![데스크톱 화면2](./images/screenshot_desktop_dark.jpg)
 
 ### 모바일
 
-![모바일 화면](images/screenshot-mobile.png)
-
-### 다크 모드
-
-![다크 모드 화면](images/screenshot-dark.png)
+![모바일 화면1](./images/screenshot_mobile_light.jpg)
+![모바일 화면2](./images/screenshot_mobile_dark.jpg)
